@@ -1,0 +1,21 @@
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle atom-kancolle'
+      'command': 'atom-kancolle:toggle'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'atom-kancolle'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'atom-kancolle:toggle'
+        }
+      ]
+    ]
+  }
+]

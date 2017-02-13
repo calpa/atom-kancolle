@@ -1,0 +1,18 @@
+{
+  "name": "atom-kancolle",
+  "main": "./lib/atom-kancolle",
+  "version": "0.1.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "atom-kancolle:toggle"
+  },
+  "repository": "https://github.com/calpa/atom-kancolle",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

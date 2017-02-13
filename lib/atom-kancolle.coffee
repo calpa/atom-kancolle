@@ -13,8 +13,6 @@ module.exports = AtomKanColle =
       self.notify()
     , @remaining_time
 
-
-    # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view

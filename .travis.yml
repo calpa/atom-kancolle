@@ -22,8 +22,10 @@ script:
 
 notifications:
   email:
-    on_success: never
-    on_failure: change
+    recipients:
+      - calpaliu@gmail.com
+    on_success: always
+    on_failure: always
 
 branches:
   only:

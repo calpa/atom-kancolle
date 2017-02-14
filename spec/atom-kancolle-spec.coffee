@@ -18,11 +18,12 @@ describe "Kancolle", ->
     expect(kancolle.getHourNotification(1)).toBe now.japanese["0100"]
 
   it "can get the noti src", ->
-    expect(kancolle.getSoundSrc(hour)).not.toBe undefined
-
-  it "can play sound", ->
-    res = kancolle.getTime(time)
-    expect(kancolle.playSound(voice[res])).not.toBe undefined
+    expect(kancolle.getSoundSrc("0000")).toBe voice["0000"]
 
   it "should notify me", ->
     expect(kancolle.notify).not.toBe undefined
+
+  it "can calculate the remaining time", ->
+    expect(kancolle.remains(59)).toBe 1
+    expect(kancolle.remains(30)).toBe 30
+    expect(kancolle.remains()).toBe 60 - new Date().getMinutes()

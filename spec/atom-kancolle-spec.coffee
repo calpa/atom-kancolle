@@ -1,11 +1,12 @@
 char = require "../lib/character"
 kancolle = require "../lib/atom-kancolle"
+moment = require 'moment-timezone'
 
 describe "Kancolle", ->
   time = Math.floor(Math.random() * 10 + 1)
 
   now = char.Yamato.notification.hour
-  hour = new Date().getHours()
+  hour = moment().hour()
   voice = now.voice
 
   it "should store time", ->

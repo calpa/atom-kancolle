@@ -1,13 +1,30 @@
 char = require "./character"
+moment = require "moment-timezone"
 
 module.exports = AtomKanColle =
+  config:
+    inJapan:
+      title: 'Use the time in Japan?'
+      type: 'boolean'
+      default: true
 
   activate: (state) ->
     @notify()
 
+  deactivate: ->
+
+  notify: ->
+    currentHour = moment().hour()
+    currentHour += 1 if atom.config.get("atom-kancolle.inJapan") is true
+
+    @message = @getHourNotification(currentHour)
+    atom.notifications.addSuccess(@message)
+
+    @playSound(currentHour)
+
   remains: (nextHour)->
     if nextHour == undefined
-      nextHour = new Date().getMinutes()
+      nextHour = moment().minute()
 
     remaining_time = 60 - nextHour
 
@@ -18,21 +35,10 @@ module.exports = AtomKanColle =
       setTimeout(@notify(), remaining_time * 60 * 1000)
       return remaining_time
 
-  deactivate: ->
-
-  notify: ->
-    date = new Date()
-
-    @message = @getHourNotification(date.getHours())
-    atom.notifications.addSuccess(@message)
-
-    @playSound(date.getHours())
-
   getTime: (time) ->
     if time < 10
       time = "0" + time # Check if the time is from 0 to 10
-    time = time + "00"
-    return time
+    return time + "00"
 
   playSound: (time) ->
     time = @getTime(time)

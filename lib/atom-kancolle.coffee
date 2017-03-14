@@ -7,6 +7,11 @@ module.exports = AtomKanColle =
       title: 'Use the time in Japan?'
       type: 'boolean'
       default: true
+    character:
+      title: 'Your waifu?'
+      type: 'string'
+      default: 'Yamato'
+      enum: ['Yamato']
 
   activate: (state) ->
     @notify()
@@ -48,9 +53,11 @@ module.exports = AtomKanColle =
     return src
 
   getSoundSrc: (hour) ->
-    return char["Yamato"]["notification"]["hour"]["voice"][hour]
+    character = atom.config.get('atom-kancolle.character')
+    return char[character]["notification"]["hour"]["voice"][hour]
 
   getHourNotification: (hour) ->
     time = @getTime(hour) if hour.length isnt 4
-    noti = char.Yamato.notification.hour.japanese[time]
+    character = atom.config.get('atom-kancolle.character')
+    noti = char[character]["notification"]["hour"]["japanese"][time]
     return noti

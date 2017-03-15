@@ -7,7 +7,7 @@ describe "Kancolle", ->
     atom.config.set('atom-kancolle.character', 'Yamato')
 
   it "can set the character", ->
-    expect(atom.config.get('atom-kancolle.character')).toBe 'Yamato'
+    expect(kancolle.getConfig('character')).toBe 'Yamato'
 
   time = Math.floor(Math.random() * 10 + 1)
 
@@ -25,6 +25,7 @@ describe "Kancolle", ->
     expect(kancolle.getHourNotification(1)).toBe now.japanese["0100"]
 
   it "can get the noti src", ->
+    console.log(kancolle.getSoundSrc("0100"));
     expect(kancolle.getSoundSrc("0000")).toBe voice["0000"]
 
   it "should notify me", ->
@@ -36,6 +37,10 @@ describe "Kancolle", ->
     expect(kancolle.remains()).toBe 60 - moment().minutes()
 
 describe "atom-kancolle config", ->
+  it "can get the character config", ->
+    expect(atom.config.set('atom-kancolle.character', 'Yamato')).toBe true
+    expect(kancolle.getConfig('character')).toBe 'Yamato'
+
   it "can use Japan Timezone", ->
     expect(atom.config.set('atom-kancolle.inJapan', true)).toBe true
     expect(atom.config.get('atom-kancolle.inJapan')).toBe true

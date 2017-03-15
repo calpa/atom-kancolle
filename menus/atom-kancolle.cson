@@ -9,7 +9,7 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'atom-kancolle'
+      'label': 'Atom Kancolle'
       'submenu': [
         {
           'label': 'Toggle'

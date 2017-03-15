@@ -43,8 +43,4 @@ describe "atom-kancolle config", ->
 
   it "can use Japan Timezone", ->
     expect(atom.config.set('atom-kancolle.inJapan', true)).toBe true
-    expect(atom.config.get('atom-kancolle.inJapan')).toBe true
-
-  it "can obtain Japan time", ->
-    hour = moment().tz("Asia/Tokyo").hour()
-    expect(hour).toBe(moment().hour() + 1)
+    expect(kancolle.getConfig('inJapan')).toBe true
